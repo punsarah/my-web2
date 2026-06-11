@@ -1,0 +1,19 @@
+name: Deploy Second Web to Local Server
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: self-hosted
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Copy files to Nginx web root
+        run: |
+          cp -r * /var/www/my-web2/
+          echo "Deployment Successful!"
